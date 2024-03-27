@@ -11,6 +11,7 @@ jobs:
     outputs:
       java7: ${{ steps.changes.outputs.java7 }}
       java8: ${{ steps.changes.outputs.java8 }}
+      readme: ${{ steps.changes.outputs.readme }}
     steps:
       - uses: actions/checkout@v3
       - uses: dorny/paths-filter@v2
@@ -21,6 +22,8 @@ jobs:
             - 'Dockerfile.java7'
             java8:
             - 'Dockerfile.java8'
+            readme:
+            - 'readme.md'
   build_java7:
     needs: changes
     if: ${{ needs.changes.outputs.java7 == 'true' }}
@@ -69,3 +72,17 @@ jobs:
         push: true
         tags: vtarahan/netapp:java8
         provenance: false
+  docker_hub_description:
+    needs: changes
+    if: ${{ needs.changes.outputs.readme == 'true' }}
+    name: Docker Hub description update
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: vtarahan/netapp
