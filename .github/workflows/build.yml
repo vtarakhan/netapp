@@ -23,7 +23,7 @@ jobs:
             java8:
             - 'Dockerfile.java8'
             readme:
-            - 'readme.md'
+            - 'README.md'
   build_java7:
     needs: changes
     if: ${{ needs.changes.outputs.java7 == 'true' }}
