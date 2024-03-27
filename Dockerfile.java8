@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 #COPY jdk-7u80-linux-x64.tar.gz /usr/local/
 #COPY netapp-oncommand-sysmgr_2.2.0-2182_all.deb /usr/local/
 RUN apt update && apt upgrade -y && apt install -y libx11-6 libxtst6 libxrender1 libxi6 flashplugin-installer \
-    libxext6 desktop-file-utils chromium-browser && \
+    libxext6 desktop-file-utils chromium-browser wget && \
     wget https://uakasta-my.sharepoint.com/personal/v_tarakhan_kasta_ua/_layouts/15/download.aspx?SourceUrl=%2Fpersonal%2Fv%5Ftarakhan%5Fkasta%5Fua%2FDocuments%2Fnetappontap%2Fjdk%2D7u80%2Dlinux%2Dx64%2Etar%2Egz && \
     tar -xvzf jdk-7u80-linux-x64.tar.gz -C /usr/local/ && rm -rf jdk-7u80-linux-x64.tar.gz && \
     update-alternatives --install /usr/bin/java java /usr/local/jdk1.7.0_80/bin/java 1 && \
