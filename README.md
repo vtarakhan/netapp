@@ -1,11 +1,11 @@
 # netapp oncommand
-This conteiner create for run netapp oncomand and java web app
+This conteiner created for run netapp oncomand and java web app
 
-Its work with wsl2, must work on linux but not tested
+Its works with wsl2, must works on linux but its not tested
 
-For start this conteiner use `run.sh`
+To start this conteiner use `run.sh`
 
-befor run jnlp add sites to java allowed in `jcontrol`
+Befor runing jnlp, add sites to java allowed in `jcontrol`
 
 Comands:
 ```
